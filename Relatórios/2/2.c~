@@ -1,0 +1,46 @@
+/*
+d²y/dt² = -g/m      
+d²x/dt² = 0 
+
+dy/dt = vy
+dvy/dt = -g/m
+
+dx/dt = vx
+*/
+#include<stdio.h>
+
+#define g 9.8
+#define m 1.
+#define dt 1e-4
+
+double dvy(){
+	return (-g/m);
+}
+
+double dy(double vy){
+	return vy[0];
+}
+
+double dx(double vx){
+	return vx[0];
+}
+
+main()
+{
+	double y[3],vy[3],t, g;
+	
+	y[0]=0;
+	vy[0]=10;
+	y[1]=y[0]+dy(vy[0])*dt;
+	vy[1]=vy[0]+2*dvy()*dt;
+	for(t=0;t<(10+dt);t+=dt)
+	{
+		y[2]=y[0]+2*dy(vy[1])*dt;
+		vy[2]=vy[1]+dvy
+		printf("%f\t%f\n",t,y[2]);
+		y[0]=y[1];
+		y[1]=y[2];
+		vy[0]=vy[1];
+		vy[1]=vy[2];
+	}
+}
